@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basketball Betting</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Basketball Betting App</h1>
+        <p>Place your bets on player stats with fake money "ς".</p>
+    </header>
+    <div class="container">
+        <h2>Place Your Bet</h2>
+        <form id="bet-form">
+            <label for="player">Select Player:</label>
+            <select id="player" required>
+                <option value="Ari">Ari</option>
+                <option value="Evan">Evan</option>
+                <option value="Valin">Valin</option>
+                <option value="Reeyan">Reeyan</option>
+                <option value="Arman">Arman</option>
+                <option value="Jibran">Jibran</option>
+                <option value="Knox">Knox</option>
+                <option value="Usman">Usman</option>
+                <option value="Ntito">Ntito</option>
+                <option value="Cyrus">Cyrus</option>
+                <option value="Pierre">Pierre</option>
+                <option value="Mark">Mark</option>
+            </select>
+
+            <label for="stat">Bet on:</label>
+            <select id="stat" required>
+                <option value="points">Points</option>
+                <option value="rebounds">Rebounds</option>
+            </select>
+
+            <label for="amount">Bet Amount (in ς):</label>
+            <input type="number" id="amount" required>
+
+            <label for="target">Target Number:</label>
+            <input type="number" id="target" required>
+
+            <button type="submit">Place Bet</button>
+        </form>
+
+        <div id="bet-info"></div>
+    </div>
+
+    <footer>
+        <p>Bet responsibly! &copy; 2024</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
