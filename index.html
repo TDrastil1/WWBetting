@@ -3,55 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basketball Betting</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Westwood Basketball Betting</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Basketball Betting App</h1>
-        <p>Place your bets on player stats with fake money "ς".</p>
-    </header>
     <div class="container">
-        <h2>Place Your Bet</h2>
-        <form id="bet-form">
-            <label for="player">Select Player:</label>
-            <select id="player" required>
-                <option value="Ari">Ari</option>
-                <option value="Evan">Evan</option>
-                <option value="Valin">Valin</option>
-                <option value="Reeyan">Reeyan</option>
-                <option value="Arman">Arman</option>
-                <option value="Jibran">Jibran</option>
-                <option value="Knox">Knox</option>
-                <option value="Usman">Usman</option>
-                <option value="Ntito">Ntito</option>
-                <option value="Cyrus">Cyrus</option>
-                <option value="Pierre">Pierre</option>
-                <option value="Mark">Mark</option>
-            </select>
+        <!-- Header Section -->
+        <header>
+            <h1>Westwood Basketball Betting</h1>
+            <p>Place your bets and see the possible payouts!</p>
+        </header>
 
-            <label for="stat">Bet on:</label>
-            <select id="stat" required>
-                <option value="points">Points</option>
-                <option value="rebounds">Rebounds</option>
-            </select>
+        <!-- User Login Section -->
+        <div class="user-account">
+            <h3>Log In</h3>
+            <form id="loginForm">
+                <input type="text" id="loginName" placeholder="Enter your name" required>
+                <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                <button type="button" id="loginButton" class="form-button">Log In</button>
+            </form>
+            <p id="currentUser">No user logged in.</p>
+        </div>
 
-            <label for="amount">Bet Amount (in ς):</label>
-            <input type="number" id="amount" required>
+        <!-- Betting Form Section -->
+        <div class="betting-form">
+            <h2>Place Your Bet</h2>
+            <form id="betForm" action="https://formspree.io/f/xyzyplew" method="POST">
+                <!-- Hidden fields to include user details -->
+                <input type="hidden" name="userEmail" id="userEmailInput" value="">
+                <input type="hidden" name="userName" id="userNameInput" value="">
 
-            <label for="target">Target Number:</label>
-            <input type="number" id="target" required>
+                <!-- Player Selection -->
+                <div class="form-group">
+                    <label for="player">Select Player:</label>
+                    <select id="player" name="player" required>
+                        <option value="Matthew Suk">Matthew Suk</option>
+                        <option value="Ari Piller">Ari Piller</option>
+                        <option value="Evan Ludeman">Evan Ludeman</option>
+                        <option value="Valin Lively">Valin Lively</option>
+                        <option value="Reeyan Mistry">Reeyan Mistry</option>
+                        <option value="Arman Aslan">Arman Aslan</option>
+                        <option value="Ntito Josiah-Olu">Ntito Josiah-Olu</option>
+                        <option value="Cyrus Terry">Cyrus Terry</option>
+                        <option value="Pierre Tissot">Pierre Tissot</option>
+                        <option value="Mark Djomo">Mark Djomo</option>
+                    </select>
+                </div>
 
-            <button type="submit">Place Bet</button>
-        </form>
+                <!-- Stat Selection -->
+                <div class="form-group">
+                    <label for="stat">Select Stat:</label>
+                    <select id="stat" name="stat" required>
+                        <option value="points">Points</option>
+                        <option value="assists">Assists</option>
+                        <option value="rebounds">Rebounds</option>
+                    </select>
+                </div>
 
-        <div id="bet-info"></div>
+                <!-- Expected Stat Input -->
+                <div class="form-group">
+                    <label for="expected-stat">Enter Expected Stat Amount:</label>
+                    <input type="number" id="expected-stat" name="expectedStat" required placeholder="e.g. 20">
+                </div>
+
+                <!-- Bet Amount Input -->
+                <div class="form-group">
+                    <label for="amount">Enter Bet Amount (in ς):</label>
+                    <input type="number" id="amount" name="betAmount" min="1" max="500" required>
+                </div>
+
+                <!-- Possible Payout -->
+                <div class="payout-summary">
+                    <h3>Possible Payout</h3>
+                    <div id="payout">Fill in your bet details to see the payout.</div>
+                </div>
+
+                <!-- Submit Button -->
+                <div id="bet-animation" style="display: none;"></div> <!-- Hidden animation container -->
+                <button type="submit" class="form-button">Place Bet</button>
+            </form>
+        </div>
+
+        <!-- Bet History Section -->
+        <div class="bet-history">
+            <h3>Your Bet History</h3>
+            <ul id="bet-history-list">
+                <p>No bets placed yet.</p>
+            </ul>
+        </div>
+
+        <!-- Leaderboard Section -->
+        <div class="leaderboard">
+            <h3>Top Bettors</h3>
+            <div id="leaderboard-list">
+                <p>No data yet.</p>
+            </div>
+        </div>
+
+        <!-- Scoreboard Section -->
+        <div class="scoreboard">
+            <h3>Player Stats</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Player</th>
+                        <th>Points</th>
+                        <th>Assists</th>
+                        <th>Rebounds</th>
+                    </tr>
+                </thead>
+                <tbody id="scoreboard-body">
+                    <!-- Player stats will populate here dynamically -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2024 Westwood Basketball Betting. All Rights Reserved.</p>
+        </footer>
     </div>
-
-    <footer>
-        <p>Bet responsibly! &copy; 2024</p>
-    </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
